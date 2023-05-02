@@ -19,6 +19,11 @@ files = [
         f"{HOME_DIR}/.config/Code - OSS/User/settings.json",
         f"{BACKUP_DIR}/Code - OSS/User/settings.json",
     ),
+    # gtk settings
+    (
+        f"{HOME_DIR}/.config/gtk-3.0/settings.ini",
+        f"{BACKUP_DIR}/gtk-3.0/settings.ini",
+    ),
     # i3
     (f"{HOME_DIR}/.config/i3/config", f"{BACKUP_DIR}/i3/config"),
     # i3blocks
