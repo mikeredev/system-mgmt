@@ -44,7 +44,7 @@ files = [
         f"{BACKUP_DIR}/rofi/themes/custom_drun.rasi",
     ),
     # vim
-    (f"{HOME_DIR}/.vim/vimrc", f"{BACKUP_DIR}/vim/vimrc"),
+    (f"{HOME_DIR}/.vimrc", f"{BACKUP_DIR}/.vimrc"),
 ]
 
 
