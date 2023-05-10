@@ -31,6 +31,10 @@ files = [
         f"{HOME_DIR}/.config/i3blocks/i3blocks.conf",
         f"{BACKUP_DIR}/i3blocks/i3blocks.conf",
     ),
+    (
+        f"{HOME_DIR}/.config/i3blocks/i3blocks.py.conf",
+        f"{BACKUP_DIR}/i3blocks/i3blocks.py.conf",
+    ),
     # i3status
     (
         f"{HOME_DIR}/.config/i3status/i3status.conf",
