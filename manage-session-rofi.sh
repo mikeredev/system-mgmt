@@ -1,7 +1,7 @@
 #!/bin/bash
 
 options=("Lock" "Logoff" "Suspend" "Reboot" "Shutdown")
-chosen=$(printf '%s\n' "${options[@]}" | rofi -dmenu -matching normal -p "Manage Session")
+chosen=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -p "Manage Session")
 
 case "$chosen" in
     "Lock")
