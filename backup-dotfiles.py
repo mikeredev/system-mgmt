@@ -44,8 +44,13 @@ files = [
     (f"{HOME_DIR}/.config/picom/picom.conf", f"{BACKUP_DIR}/picom/picom.conf"),
     # rofi
     (
-        f"{HOME_DIR}/.config/rofi/themes/custom_drun.rasi",
-        f"{BACKUP_DIR}/rofi/themes/custom_drun.rasi",
+        f"{HOME_DIR}/.config/rofi/themes/rofi.rasi",
+        f"{BACKUP_DIR}/rofi/themes/rofi.rasi",
+    ),
+    # console-helper rofi
+    (
+        f"{HOME_DIR}/.config/rofi/themes/console-helper.rasi",
+        f"{BACKUP_DIR}/rofi/themes/console-helper.rasi",
     ),
     # vim
     (f"{HOME_DIR}/.vimrc", f"{BACKUP_DIR}/.vimrc"),
