@@ -3,6 +3,7 @@ import json
 import filecmp
 import shutil
 import datetime
+import sys
 
 color_reset = "\033[0m"
 color_ok = "\033[32m"
