@@ -21,8 +21,7 @@ def run_function(message, func, *args, **kwargs):
         result = func(*args, **kwargs)
         result = f"{color_ok}OK{color_reset} {color_log}{str(result)}{color_reset}"
     except Exception as e:
-        result = f"{color_nok}FAIL{color_reset}\n==> {color_log}{str(e)}{color_reset}"
-        # return result
+        result = f"{color_nok}FAIL{color_reset}\n{color_log}==> {str(e)}{color_reset}"
     print(result)
 
 
