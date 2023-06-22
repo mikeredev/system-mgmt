@@ -1,74 +1,66 @@
 import os
+import json
 import filecmp
 import shutil
 import datetime
 
+color_reset = "\033[0m"
+color_ok = "\033[32m"
+color_nok = "\033[31m"
+color_log = "\033[2m"
+
 HOME_DIR = os.path.expanduser("~")
+CONFIG_FILE = f"{HOME_DIR}/.config/system-mgmt/backup-dotfiles.json"
 BACKUP_DIR = f"{HOME_DIR}/data/backup/dotfiles"
 
-files = [
-    # alacritty
-    (
-        f"{HOME_DIR}/.config/alacritty/alacritty.yml",
-        f"{BACKUP_DIR}/alacritty/alacritty.yml",
-    ),
-    # bashrc
-    (f"{HOME_DIR}/.bashrc", f"{BACKUP_DIR}/.bashrc"),
-    # code
-    (
-        f"{HOME_DIR}/.config/Code - OSS/User/settings.json",
-        f"{BACKUP_DIR}/Code - OSS/User/settings.json",
-    ),
-    # gtk settings
-    (
-        f"{HOME_DIR}/.config/gtk-3.0/settings.ini",
-        f"{BACKUP_DIR}/gtk-3.0/settings.ini",
-    ),
-    # i3
-    (f"{HOME_DIR}/.config/i3/config", f"{BACKUP_DIR}/i3/config"),
-    # i3blocks
-    (
-        f"{HOME_DIR}/.config/i3blocks/i3blocks.conf",
-        f"{BACKUP_DIR}/i3blocks/i3blocks.conf",
-    ),
-    (
-        f"{HOME_DIR}/.config/i3blocks/i3blocks.py.conf",
-        f"{BACKUP_DIR}/i3blocks/i3blocks.py.conf",
-    ),
-    # i3status
-    (
-        f"{HOME_DIR}/.config/i3status/i3status.conf",
-        f"{BACKUP_DIR}/i3status/i3status.conf",
-    ),
-    # picom
-    (f"{HOME_DIR}/.config/picom/picom.conf", f"{BACKUP_DIR}/picom/picom.conf"),
-    # rofi
-    (
-        f"{HOME_DIR}/.config/rofi/themes/rofi.rasi",
-        f"{BACKUP_DIR}/rofi/themes/rofi.rasi",
-    ),
-    # console-helper rofi
-    (
-        f"{HOME_DIR}/.config/rofi/themes/console-helper.rasi",
-        f"{BACKUP_DIR}/rofi/themes/console-helper.rasi",
-    ),
-    # vim
-    (f"{HOME_DIR}/.vimrc", f"{BACKUP_DIR}/.vimrc"),
-]
+
+def run_function(message, func, *args, **kwargs):
+    output = f"=> {message}... "
+    print(output, end="")
+    try:
+        result = func(*args, **kwargs)
+        result = f"{color_ok}OK{color_reset} {color_log}{str(result)}{color_reset}"
+    except Exception as e:
+        result = f"{color_nok}FAIL{color_reset}\n==> {color_log}{str(e)}{color_reset}"
+        # return result
+    print(result)
+
+
+def load_configuration():
+    global files_for_backup
+    func_output = ""
+    with open(CONFIG_FILE, "r") as file:
+        config = json.load(file)
+
+    files_for_backup = [
+        (
+            os.path.join(HOME_DIR, file_config["source"]),
+            os.path.join(BACKUP_DIR, file_config["destination"]),
+        )
+        for file_config in config["backup-dotfiles"]
+    ]
+    return func_output
 
 
 def check_backup_structure():
+    func_output = ""
+    # make parent dir if not existing
     if not os.path.exists(BACKUP_DIR):
         os.makedirs(BACKUP_DIR)
-    for _, dest_path in files:
+        func_output += "\n==> created main directory: " + BACKUP_DIR
+
+    # create any required sub-folders
+    for _, dest_path in files_for_backup:
         dest_dir = os.path.dirname(dest_path)
         if not os.path.exists(dest_dir):
             os.makedirs(dest_dir)
+            func_output += "\n==> created directory: " + dest_dir
+    return func_output
 
 
-def check_backup_status(file, dest):
+def check_backup_status():
     backups = {}
-    for source_path, dest_path in files:
+    for source_path, dest_path in files_for_backup:
         if not os.path.exists(dest_path):
             backups[source_path] = dest_path
             continue
@@ -78,29 +70,41 @@ def check_backup_status(file, dest):
     return backups
 
 
-def make_backup(source, dest):
-    backups = check_backup_status(source, dest)
+def make_backup():
+    func_output = ""
+    backups = check_backup_status()
     if not backups:
-        print("No changes to backup.")
-        return
-    print("The following files have changed since the last backup:")
+        func_output += "\n==> no changes to back up"
+        return func_output
+
+    # if new files found
+    func_output_log = "new files found"
     for source_path, dest_path in backups.items():
-        print(f"{source_path} -> {dest_path}")
-    print("Do you want to backup these files? (y/n)")
+        func_output_log += f"\n==> {source_path} -> {dest_path}"
+    print(f"{color_log}{func_output_log}{color_reset}")
+
+    # get user confirmation to continue
+    print(f"=> do you want to backup these files? (y/n) ", end="")
     user_input = input().strip().lower()
     if user_input != "y":
-        return
+        func_output += "==> backup cancelled"
+        return func_output
+
+    # make backup
     for source_path, dest_path in backups.items():
         shutil.copy2(source_path, dest_path)
-    print("Backup completed.")
+    func_output += "==> backup complete"
 
-    # Create log file
-    log_path = os.path.join(dest, "backup.log")
+    # write to log file
+    log_path = os.path.join(BACKUP_DIR, "backup.log")
     with open(log_path, "a") as f:
         f.write(f"Backup completed on {datetime.datetime.now()}\n")
         for source_path, dest_path in backups.items():
             f.write(f"{source_path} -> {dest_path}\n")
+    return func_output
 
 
-check_backup_structure()
-make_backup(files, BACKUP_DIR)
+if __name__ == "__main__":
+    run_function("load config", load_configuration)
+    run_function("initialise backup", check_backup_structure)
+    run_function("execute backup", make_backup)
