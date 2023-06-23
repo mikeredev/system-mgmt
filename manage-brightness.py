@@ -1,3 +1,16 @@
+"""
+i3blocks
+[brightness]
+command=~/data/scripts/i3blocks/i3blocks.py --check brightness --warning 1.0 --critical 1.2
+interval=15
+signal=11
+
+i3
+# screen brightness (i3blocks signal 11)
+bindsym $mod+o exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
+bindsym $mod+p exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust up && exec pkill -RTMIN+11 i3blocks'
+"""
+
 import argparse
 import subprocess
 import sys
