@@ -1,3 +1,9 @@
+""" backup-dotfiles.py
+desc:       check selected files for changes and copy them to another folder
+usage:      python backup-dotfiles.py
+requires:   colorama, custom module (modules repo)
+"""
+
 # import modules
 from colorama import Style
 import datetime
@@ -10,7 +16,7 @@ import sys
 # import custom modules from PYTHONPATH
 import run_function
 
-# define constants
+# constants
 HOME_DIR = os.path.expanduser("~")
 CONFIG_FILE = f"{HOME_DIR}/.config/system-mgmt/backup-dotfiles.json"
 BACKUP_DIR = f"{HOME_DIR}/data/backup/dotfiles"
