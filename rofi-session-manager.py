@@ -1,5 +1,6 @@
 """ rofi-session-manager.py
-desc:       rofi session manager for i3wm
+desc:       rofi session manager for i3
+requires:   rofi
 usage:      rofi-session-manager.py [-h] [--session {lock,logoff,suspend,reboot,shutdown}] [--rofi]
 i3 rofi:    bindsym $mod+Shift+l exec --no-startup-id sh -c 'python rofi-session-manager.py --rofi'
 i3 lock:    bindsym $mod+l exec --no-startup-id sh -c 'python rofi-session-manager.py --session lock'
@@ -8,7 +9,7 @@ i3 lock:    bindsym $mod+l exec --no-startup-id sh -c 'python rofi-session-manag
 # import modules
 import subprocess
 
-# variables
+# user constants
 custom_theme = True
 theme = "~/.config/rofi/themes/dmenu.rasi"
 lock_background = "~/Pictures/wallpapers/arch_pixel_dark.png"

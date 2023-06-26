@@ -1,5 +1,6 @@
 """ manage-screenshot.py
-desc:                   for taking screenshots via hotkey and saving
+desc:                   screenshot functions to bind to hotkeys
+requires:               scrot xclip
 i3 full screen shot:    bindsym $mod+Print exec --no-startup-id sh -c "python ~/data/scripts/system-mgmt/manage-screenshot.py --type full"
 i3 area screenshot:     bindsym $mod+Shift+Print exec --no-startup-id sh -c "sleep 0.2s && python ~/data/scripts/system-mgmt/manage-screenshot.py --type area"
 """
@@ -10,13 +11,6 @@ import random
 import time
 import subprocess
 import argparse
-
-
-# function to copy image to clipboard
-def copy_to_clipboard(image_path):
-    subprocess.run(
-        ["xclip", "-selection", "clipboard", "-t", "image/png", image_path], check=True
-    )
 
 
 # function to take screenshot (fullscreen / area)
@@ -30,6 +24,13 @@ def take_screenshot(screenshot_type="full"):
     else:
         subprocess.run(["scrot", "-s", file_path], check=True)
     copy_to_clipboard(file_path)
+
+
+# function to copy image to clipboard
+def copy_to_clipboard(image_path):
+    subprocess.run(
+        ["xclip", "-selection", "clipboard", "-t", "image/png", image_path], check=True
+    )
 
 
 # main
