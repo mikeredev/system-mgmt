@@ -12,13 +12,13 @@
 - screenshot functions to bind to hotkeys
 - takes fullscreen/area screenshot, saves locally, copies image to clipboard
 
+### rofi-gpt-chatbot
+- creates a chat completion using the OpenAI API
+- rofi menu to generate and return a chat completion
+
 ### rofi-session-manager
 - rofi session manager for i3
 - lock/logoff/reboot/etc.
 
 ### rofi-wifi-manager
 - rofi wifi connection manager for i3
-
-### rofi-gpt-chatbot
-- creates a chat completion using the OpenAI API
-- rofi menu to generate and return a chat completion

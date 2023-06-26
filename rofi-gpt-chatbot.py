@@ -9,38 +9,14 @@ i3:         bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/sys
 import openai
 import os
 import subprocess
+import openai_chat
 
 # load custom theme
 theme = "~/.config/rofi/themes/chatbot.rasi"
 
-# load default model (from .bashrc)
-model = os.environ.get("OPENAI_MODEL")
 
-
-# function to generate chat completion
-def generate_chat_completion(messages):
-    response = openai.ChatCompletion.create(
-        temperature=0,
-        max_tokens=150,
-        model=model,
-        messages=messages,
-    )
-    reply = response.choices[0].message.content
-    return {"reply": reply}
-
-
-# function to generate response
-def chat(query):
-    system_prompt = "Reply briefly and concisely all in one line."
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": query},
-    ]
-    output = generate_chat_completion(messages)
-    return output
-
-
-def main():
+# main
+try:
     # Open rofi bar and get user input
     rofi_cmd = [
         "rofi",
@@ -51,7 +27,9 @@ def main():
         theme,
     ]
     user_input = subprocess.check_output(rofi_cmd, universal_newlines=True).strip()
-    chat_response = chat(user_input)
+    chat_response = openai_chat.chat(
+        "Reply briefly and concisely all in one line.", user_input
+    )
     chat_output = chat_response["reply"]
 
     # Display the output in rofi
@@ -63,13 +41,8 @@ def main():
         theme,
     ]
     subprocess.run(rofi_cmd)
-
-
-if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        subprocess.run(
-            "notify-send 'rofi-gpt-chatbot' 'an error occurred communicating with the server' -t 3000 -r 1025",
-            shell=True,
-        )
+except Exception as e:
+    subprocess.run(
+        f"notify-send 'rofi-gpt-chatbot' 'error: {e}' -t 3000 -r 1025",
+        shell=True,
+    )
