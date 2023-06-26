@@ -48,16 +48,14 @@ def get_wifi_networks():
 # function to connect to a wifi network
 def connect_to_wifi(ssid):
     try:
-        run_command(f"notify-send 'wifi manager' 'connecting to {ssid}...' -r 9889")
+        run_command(f"notify-send 'wifi manager' 'connecting to {ssid}...' -r 9003")
         subprocess.run(["nmcli", "device", "wifi", "connect", ssid], check=True)
         run_command(
-            f"notify-send 'wifi manager' '{ssid} connected successfully 👍' -r 9889 -t 3000"
+            f"notify-send 'wifi manager' '{ssid} connected successfully 👍' -r 9003 -t 3000"
         )
         run_command("pkill -RTMIN+3 i3blocks")
     except subprocess.CalledProcessError as e:
-        run_command(
-            f"notify-send 'wifi manager' 'failed to connect to wifi network: {e}' -r 9889"
-        )
+        run_command(f"notify-send 'wifi manager' 'error: {e}' -r 9003")
 
 
 # function to show list of SSIDs in a rofi menu
@@ -89,7 +87,7 @@ def show_wifi_menu():
     process = subprocess.Popen(
         rofi_cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding="utf-8"
     )
-    run_command("notify-send 'wifi manager' 'network scan complete' -t 1 -r 9889")
+    run_command("notify-send 'wifi manager' 'network scan complete' -t 1 -r 9003")
     selected_network, _ = process.communicate(input=menu_items_str)
     selected_network = selected_network.strip().split(" ")[
         0
@@ -102,6 +100,6 @@ def show_wifi_menu():
 # main
 if __name__ == "__main__":
     run_command(
-        "notify-send 'wifi manager' 'scanning networks, please wait...' -r 9889"
+        "notify-send 'wifi manager' 'scanning networks, please wait...' -r 9003"
     )
     show_wifi_menu()
