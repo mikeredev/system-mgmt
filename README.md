@@ -1,12 +1,12 @@
 ## system management tools
 - all tools designed for i3 on arch
-- some tools use custom modules from the `modules` repo
-- any rofi custom themes are in the `dotfiles` repo
+- some tools use custom modules from the [modules](https://github.com/mikeredev/modules) repo
+- any rofi custom themes are in the [dotfiles](https://github.com/mikeredev/dotfiles/tree/main/rofi/themes) repo
 
 ### backup-dotfiles
 - check selected files for changes and copy them to another folder
 - configured by [backup-dotfiles.json](https://github.com/mikeredev/dotfiles/blob/main/system-mgmt/backup-dotfiles.json)
-- uses custom module
+- uses [run_function](https://github.com/mikeredev/modules/blob/main/run_function.py) custom module
 
 ### manage-screenshot
 - screenshot functions to bind to hotkeys
