@@ -5,7 +5,7 @@
 
 ### backup-dotfiles
 - check selected files for changes and copy them to another folder
-- configured by `~/.config/system-mgmt/backup-dotfiles.json`
+- configured by [backup-dotfiles.json](https://github.com/mikeredev/dotfiles/blob/main/system-mgmt/backup-dotfiles.json)
 - uses custom module
 
 ### manage-screenshot
