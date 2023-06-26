@@ -1,6 +1,7 @@
 ## system management tools
 - all tools designed for i3 on arch
 - some tools use custom modules from the `modules` repo
+- any rofi custom themes are in the `dotfiles` repo
 
 ### backup-dotfiles
 - check selected files for changes and copy them to another folder
