@@ -19,3 +19,6 @@
 ### rofi-wifi-manager
 - rofi wifi connection manager for i3
 
+### rofi-gpt-chatbot
+- creates a chat completion using the OpenAI API
+- rofi menu to generate and return a chat completion

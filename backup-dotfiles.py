@@ -1,7 +1,7 @@
 """ backup-dotfiles.py
 desc:       check selected files for changes and copy them to another folder
-usage:      python backup-dotfiles.py
 requires:   colorama, custom module (modules repo)
+usage:      python backup-dotfiles.py
 """
 
 # import modules

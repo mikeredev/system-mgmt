@@ -1,6 +1,6 @@
 """ rofi-wifi-manager.py
 desc:       rofi wifi connection manager for i3
-requires:   rofi notify-send
+requires:   rofi
 usage:      i3blocks signal 3 (use `pkill -RTMIN+3 i3blocks` to update the wifi block when connecting to an SSID)
 i3:         bindsym $mod+m exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/rofi-wifi-manager.py'
 """
