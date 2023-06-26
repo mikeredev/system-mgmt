@@ -15,6 +15,7 @@
 ### rofi-gpt-chatbot
 - creates a chat completion using the OpenAI API
 - rofi menu to generate and return a chat completion
+- uses [openai_chat](https://github.com/mikeredev/modules/blob/main/openai_chat.py) custom module
 
 ### rofi-session-manager
 - rofi session manager for i3

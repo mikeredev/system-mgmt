@@ -9,6 +9,8 @@ i3:         bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/sys
 import openai
 import os
 import subprocess
+
+# import custom modules from PYTHONPATH
 import openai_chat
 
 # load custom theme
@@ -27,6 +29,8 @@ try:
         theme,
     ]
     user_input = subprocess.check_output(rofi_cmd, universal_newlines=True).strip()
+
+    # send the user_input to the chatcompletion function
     chat_response = openai_chat.chat(
         "Reply briefly and concisely all in one line.", user_input
     )
