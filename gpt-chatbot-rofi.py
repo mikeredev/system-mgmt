@@ -10,32 +10,30 @@ import openai
 import os
 import subprocess
 
-# import custom modules from PYTHONPATH
+# import non-standard/custom modules
 import openai_chat
 
-# load custom theme
-theme = "~/.config/rofi/themes/chatbot.rasi"
-
+# define constants
+custom_theme = "~/.config/rofi/themes/chatbot.rasi"
 
 # main
 if __name__ == "__main__":
     try:
         # Open rofi bar and get user input
-        rofi_cmd = ["rofi", "-dmenu", "-p", "🤖 ", "-theme", theme]
+        rofi_cmd = ["rofi", "-dmenu", "-p", "🤖 ", "-theme", custom_theme]
         user_input = subprocess.check_output(rofi_cmd, universal_newlines=True).strip()
 
         # send the user_input to the chatcompletion function
-        chat_response = openai_chat.reply(
+        response = openai_chat.response(
             "Reply helpfully in one concise line.", user_input
         )
-        chat_output = chat_response["reply"]
 
         # Display the output in rofi
-        rofi_cmd = ["rofi", "-e", "🤖 " + chat_output, "-theme", theme]
+        rofi_cmd = ["rofi", "-e", "🤖 " + response["output"], "-theme", custom_theme]
         subprocess.run(rofi_cmd)
 
     except Exception as e:
         subprocess.run(
-            f"notify-send 'rofi-gpt-chatbot' 'error: {e}' -t 3000 -r 1025",
+            f"notify-send 'rofi-gpt-chatbot' 'error: {e}'",
             shell=True,
         )
