@@ -1,15 +1,9 @@
+""" wifi-manager-rofi.py
+desc:       rofi wifi connection manager for i3
+requires:   rofi
+usage:      python wifi-manager-rofi.py
+i3:         bindsym $mod+m exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/wifi-manager-rofi.py'
 """
-rofi-wifi-manager.py
-desc:         A Wi-Fi manager script using rofi.
-usage:        python rofi-wifi-manager.py
-requirements: nmcli, rofi
-function:     Displays a menu of available Wi-Fi networks and allows the user to connect to a selected network.
-arguments:    None
-returns:      None
-notes:        This script assumes that nmcli (NetworkManager) and rofi are installed and available.
-example:      python rofi-wifi-manager.py
-"""
-
 # import modules
 import subprocess
 

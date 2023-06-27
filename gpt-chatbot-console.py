@@ -1,19 +1,7 @@
-"""
-gpt-chatbot-console.py
-desc:         This script is a command-line interface for a chatbot powered by OpenAI's GPT language model. It allows users to interact with the chatbot by providing prompts and receiving responses.
-usage:        python gpt-chatbot-console.py <prompt> [--tokens <int>] [--model <str>] [--temperature <float>]
-requirements: The script requires the following modules to be installed: argparse, platform, random, time, colorama, openai_chat.
-function:     The script generates a chatbot response based on a given prompt using the OpenAI GPT model. It displays the response in the console with some formatting.
-arguments:
-  - prompt: The prompt provided by the user to initiate the chatbot conversation.
-  - --tokens <int>: (optional) The number of tokens to use for the chatbot's response. Default value is taken from the openai_chat module.
-  - --model <str>: (optional) The model to use for generating the response. Default value is taken from the openai_chat module.
-  - --temperature <float>: (optional) The temperature parameter for controlling the randomness of the response. Default value is taken from the openai_chat module.
-returns:      None
-notes:        - The script requires the openai_chat module, which should be accessible in the Python environment.
-              - The script uses the colorama module to add color formatting to the console output.
-              - The script waits for a short time (0.005 seconds) between printing each character of the response to create a typing effect.
-example:      python gpt-chatbot-console.py "Hello, how can I help you?"
+""" gpt-chatbot-console.py
+desc:       console-based OpenAI chatbot
+requires:   openai_chat colorama
+usage:      python gpt-chatbot-console.py "hello"
 """
 
 # import modules

@@ -1,13 +1,8 @@
-""" 
-gpt-chatbot-rofi.py
-desc:         This script allows the user to interact with a chatbot using the Rofi interface. It prompts the user with a message input field in Rofi, sends the user input to the chatbot for processing, and displays the chatbot's response in Rofi.
-usage:        Run this script to start the chatbot interface in Rofi.
-requirements: The script requires the following modules to be installed: os, subprocess, openai_chat.
-function:     The main function of this script is to provide a chatbot interface using Rofi.
-arguments:    None.
-returns:      None.
-notes:        The script assumes that the Rofi theme file is located at ~/.config/rofi/themes/chatbot.rasi.
-example:      python gpt-chatbot-rofi.py
+""" gpt-chatbot-rofi.py
+desc:       creates a chat completion using the OpenAI API
+requires:   openai
+usage:      python ~/data/scripts/system-mgmt/gpt-chatbot-rofi.py
+i3:         bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/gpt-chatbot-rofi.py'
 """
 
 # import modules

@@ -1,22 +1,10 @@
+""" session-manager-rofi.py
+desc:       rofi session manager for i3
+requires:   rofi
+usage:      session-manager-rofi.py [-h] [--session {lock,logoff,suspend,reboot,shutdown}] [--rofi]
+i3 rofi:    bindsym $mod+Shift+l exec --no-startup-id sh -c 'python session-manager-rofi.py --rofi'
+i3 lock:    bindsym $mod+l exec --no-startup-id sh -c 'python session-manager-rofi.py --session lock'
 """
-session-manager-rofi.py
-desc:         A session manager script for i3 window manager using rofi.
-usage:        python session-manager-rofi.py [--session ACTION] [--rofi]
-requirements: i3lock, rofi
-function:     Provides options to lock the screen, log off the session, suspend the system, reboot the system, or shut down the system.
-arguments:    
-  --session ACTION, -s ACTION: Perform a specific action (lock, logoff, suspend, reboot, shutdown).
-  --rofi, -r: Open the session manager in rofi.
-returns:      None
-notes:        This script assumes that i3 window manager is being used and the specified commands (i3lock, systemctl) are available.
-example:      
-  - Open session manager in rofi:
-    python session-manager-rofi.py --rofi
-  
-  - Lock the screen:
-    python session-manager-rofi.py --session lock
-"""
-
 # import modules
 import subprocess
 
