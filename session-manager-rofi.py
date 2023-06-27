@@ -2,8 +2,8 @@
 desc:       rofi session manager for i3
 requires:   rofi
 usage:      rofi-session-manager.py [-h] [--session {lock,logoff,suspend,reboot,shutdown}] [--rofi]
-i3 rofi:    bindsym $mod+Shift+l exec --no-startup-id sh -c 'python rofi-session-manager.py --rofi'
-i3 lock:    bindsym $mod+l exec --no-startup-id sh -c 'python rofi-session-manager.py --session lock'
+i3 rofi:    bindsym $mod+Shift+l exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/session-manager-rofi.py --rofi'
+i3 lock:    bindsym $mod+l exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/session-manager-rofi.py --session lock'
 """
 
 # import modules

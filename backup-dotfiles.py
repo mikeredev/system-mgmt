@@ -13,7 +13,7 @@ import os
 import shutil
 import sys
 
-# import custom modules from PYTHONPATH
+# import non-standard/custom modules
 import run_function
 
 # constants

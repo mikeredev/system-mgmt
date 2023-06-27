@@ -1,7 +1,7 @@
 """ manage-brightness.py
-# screen brightness (i3blocks signal 11)
-bindsym $mod+o exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
-bindsym $mod+p exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust up && exec pkill -RTMIN+11 i3blocks'
+desc:       adjust screen brightness with xrandr (i3blocks signal 11)
+i3:         bindsym $mod+o exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
+            bindsym $mod+p exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust up && exec pkill -RTMIN+11 i3blocks'
 """
 
 import argparse

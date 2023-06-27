@@ -1,12 +1,11 @@
 """ rofi-gpt-chatbot.py
 desc:       creates a chat completion using the OpenAI API
-requires:   openai
-usage:      python ~/data/scripts/system-mgmt/rofi-gpt-chatbot.py
-i3:         bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/rofi-gpt-chatbot.py'
+requires:   openai_chat
+usage:      python ~/data/scripts/system-mgmt/gpt-chatbot-rofi.py
+i3:         bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/gpt-chatbot-rofi.py'
 """
 
 # import modules
-import openai
 import os
 import subprocess
 
