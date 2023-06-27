@@ -4,6 +4,7 @@ requires:   rofi
 usage:      python wifi-manager-rofi.py
 i3:         bindsym $mod+m exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/wifi-manager-rofi.py'
 """
+
 # import modules
 import subprocess
 
