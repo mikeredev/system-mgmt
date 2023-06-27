@@ -5,6 +5,7 @@ usage:      session-manager-rofi.py [-h] [--session {lock,logoff,suspend,reboot,
 i3 rofi:    bindsym $mod+Shift+l exec --no-startup-id sh -c 'python session-manager-rofi.py --rofi'
 i3 lock:    bindsym $mod+l exec --no-startup-id sh -c 'python session-manager-rofi.py --session lock'
 """
+
 # import modules
 import subprocess
 
