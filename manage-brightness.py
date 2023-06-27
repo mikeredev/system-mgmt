@@ -1,7 +1,24 @@
-""" manage-brightness.py
-desc:       adjust screen brightness with xrandr (i3blocks signal 11)
-i3:         bindsym $mod+o exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
-            bindsym $mod+p exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust up && exec pkill -RTMIN+11 i3blocks'
+""" 
+manage-brightness.py
+desc:         This script allows the user to manage the brightness of a monitor using the xrandr utility.
+usage:        python manage-brightness.py [--monitor <monitor_name>] (--adjust <direction> | --set <level>)
+requirements: The xrandr utility must be installed on the system.
+function:     Adjusts the brightness of a specified monitor either by incrementing or decrementing the current brightness level or by setting it to a specific level.
+arguments:    
+    --monitor: Name of the monitor to adjust brightness.
+    --adjust:  Direction to adjust brightness. Available choices are "up" or "down".
+    --set:     Set brightness to a specific level (0.5-1.0).
+returns:      None
+notes:        
+    - The script uses the xrandr utility to interact with the monitor.
+    - The maximum brightness level is 1.0 and the minimum brightness level is 0.5.
+    - The brightness level is adjusted in increments of 0.1.
+    - If the specified brightness level is outside the allowed bounds, an error message is displayed and the brightness is not changed.
+example:      
+    - To increase the brightness of a monitor named "Monitor1": 
+        python manage-brightness.py --monitor Monitor1 --adjust up
+    - To set the brightness of a monitor named "Monitor2" to 0.8:
+        python manage-brightness.py --monitor Monitor2 --set 0.8
 """
 
 import argparse

@@ -1,7 +1,13 @@
-""" manage-screenshot.py
-desc:                   screenshot functions to bind to hotkeys
-i3 full screen shot:    bindsym $mod+Print exec --no-startup-id sh -c "python ~/data/scripts/system-mgmt/manage-screenshot.py --type full"
-i3 area screenshot:     bindsym $mod+Shift+Print exec --no-startup-id sh -c "sleep 0.2s && python ~/data/scripts/system-mgmt/manage-screenshot.py --type area"
+"""
+manage-screenshot.py
+desc:         Script to take screenshots of the full screen or a selected area and copy them to the clipboard.
+usage:        python manage-screenshot.py [--type {full, area}]
+requirements: The script requires the following modules to be imported: os, random, time, subprocess, argparse.
+function:     The script takes a screenshot of the full screen or a selected area, saves it as a PNG file with a unique filename, and then copies it to the clipboard.
+arguments:    The script accepts an optional argument '--type' to specify the type of screenshot: 'full' for a screenshot of the full screen (default), or 'area' for a screenshot of a selected area.
+returns:      The script does not have a return value.
+notes:        The screenshots are saved in the 'Pictures/screenshots' directory in the user's home directory. The scrot command-line tool is used to capture the screenshots, and the xclip command-line tool is used to copy the screenshots to the clipboard.
+example:      To take a screenshot of the full screen and copy it to the clipboard, run the script with no arguments: 'python manage-screenshot.py'. To take a screenshot of a selected area and copy it to the clipboard, run the script with the '--type area' argument: 'python manage-screenshot.py --type area'.
 """
 
 # import modules
