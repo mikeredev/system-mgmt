@@ -18,35 +18,24 @@ theme = "~/.config/rofi/themes/chatbot.rasi"
 
 
 # main
-try:
-    # Open rofi bar and get user input
-    rofi_cmd = [
-        "rofi",
-        "-dmenu",
-        "-p",
-        "🤖 ",
-        "-theme",
-        theme,
-    ]
-    user_input = subprocess.check_output(rofi_cmd, universal_newlines=True).strip()
+if __name__ == "__main__":
+    try:
+        # Open rofi bar and get user input
+        rofi_cmd = ["rofi", "-dmenu", "-p", "🤖 ", "-theme", theme]
+        user_input = subprocess.check_output(rofi_cmd, universal_newlines=True).strip()
 
-    # send the user_input to the chatcompletion function
-    chat_response = openai_chat.chat(
-        "Reply briefly and concisely all in one line.", user_input
-    )
-    chat_output = chat_response["reply"]
+        # send the user_input to the chatcompletion function
+        chat_response = openai_chat.reply(
+            "Reply helpfully in one concise line.", user_input
+        )
+        chat_output = chat_response["reply"]
 
-    # Display the output in rofi
-    rofi_cmd = [
-        "rofi",
-        "-e",
-        "🤖 " + chat_output,
-        "-theme",
-        theme,
-    ]
-    subprocess.run(rofi_cmd)
-except Exception as e:
-    subprocess.run(
-        f"notify-send 'rofi-gpt-chatbot' 'error: {e}' -t 3000 -r 1025",
-        shell=True,
-    )
+        # Display the output in rofi
+        rofi_cmd = ["rofi", "-e", "🤖 " + chat_output, "-theme", theme]
+        subprocess.run(rofi_cmd)
+
+    except Exception as e:
+        subprocess.run(
+            f"notify-send 'rofi-gpt-chatbot' 'error: {e}' -t 3000 -r 1025",
+            shell=True,
+        )
