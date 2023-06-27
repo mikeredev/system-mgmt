@@ -1,8 +1,24 @@
-""" backup-dotfiles.py
-desc:       check selected files for changes and copy them to another folder
-requires:   colorama, custom module (modules repo)
-usage:      python backup-dotfiles.py
 """
+backup-dotfiles.py
+desc:         A script to backup dotfiles (hidden configuration files) from the user's home directory.
+usage:        python backup-dotfiles.py
+requirements: - colorama
+              - filecmp
+              - json
+              - os
+              - shutil
+              - sys
+              - run_function (custom module)
+function:     This script backs up dotfiles listed in a configuration file to a backup directory.
+arguments:    None
+returns:      None
+notes:        The script requires the colorama, filecmp, json, os, shutil, and sys modules to be installed.
+              It also depends on the custom run_function module.
+              The configuration file should be located at ~/.config/system-mgmt/backup-dotfiles.json
+              The backup directory is set to ~/data/backup/dotfiles
+example:      python backup-dotfiles.py
+"""
+
 
 # import modules
 from colorama import Style
