@@ -1,11 +1,10 @@
 """ backup-dotfiles.py
 desc:       check selected files for changes and copy them to another folder
-requires:   colorama, custom module (modules repo)
+requires:   colorama, run_function
 usage:      python backup-dotfiles.py
 """
 
 # import modules
-from colorama import Style
 import datetime
 import filecmp
 import json
@@ -14,6 +13,7 @@ import shutil
 import sys
 
 # import non-standard/custom modules
+from colorama import Style
 import run_function
 
 # constants
