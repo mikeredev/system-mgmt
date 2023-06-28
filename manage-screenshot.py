@@ -1,16 +1,15 @@
 """ manage-screenshot.py
 desc:                   screenshot functions to bind to hotkeys
-requires:               scrot xclip
 i3 full screen shot:    bindsym $mod+Print exec --no-startup-id sh -c "python ~/data/scripts/system-mgmt/manage-screenshot.py --type full"
 i3 area screenshot:     bindsym $mod+Shift+Print exec --no-startup-id sh -c "sleep 0.2s && python ~/data/scripts/system-mgmt/manage-screenshot.py --type area"
 """
 
 # import modules
+import argparse
 import os
 import random
-import time
 import subprocess
-import argparse
+import time
 
 
 # function to take screenshot (fullscreen / area)

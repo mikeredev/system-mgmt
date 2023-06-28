@@ -16,7 +16,7 @@ import sys
 from colorama import Style
 import run_function
 
-# constants
+# set constants
 HOME_DIR = os.path.expanduser("~")
 CONFIG_FILE = f"{HOME_DIR}/.config/system-mgmt/backup-dotfiles.json"
 BACKUP_DIR = f"{HOME_DIR}/data/backup/dotfiles"

@@ -1,7 +1,7 @@
 """ gpt-chatbot-console.py
 desc:       console-based OpenAI chatbot
 requires:   openai_chat colorama
-usage:      python gpt-chatbot-console.py "hello"
+usage:      python gpt-chatbot-console.py "How do I..."
 """
 
 # import modules

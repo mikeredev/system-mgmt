@@ -8,7 +8,7 @@ import argparse
 import subprocess
 import sys
 
-# define constants
+# set constants
 MAX_BRIGHTNESS = 1.0
 MIN_BRIGHTNESS = 0.5
 BRIGHTNESS_INCREMENT = 0.1

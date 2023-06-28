@@ -12,7 +12,7 @@ import subprocess
 # import non-standard/custom modules
 import openai_chat
 
-# define constants
+# set constants
 custom_theme = "~/.config/rofi/themes/chatbot.rasi"
 
 # main

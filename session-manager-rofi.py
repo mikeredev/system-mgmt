@@ -9,7 +9,7 @@ i3 lock:    bindsym $mod+l exec --no-startup-id sh -c 'python session-manager-ro
 # import modules
 import subprocess
 
-# user constants
+# set constants
 custom_theme = True
 theme = "~/.config/rofi/themes/dmenu.rasi"
 lock_background = "~/Pictures/wallpapers/arch_pixel_dark.png"

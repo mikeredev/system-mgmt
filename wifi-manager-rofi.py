@@ -8,8 +8,8 @@ i3:         bindsym $mod+m exec --no-startup-id sh -c 'python ~/data/scripts/sys
 # import modules
 import subprocess
 
-# specify theme
-theme = "~/.config/rofi/themes/sidebar.rasi"
+# set constants
+custom_theme = "~/.config/rofi/themes/sidebar.rasi"
 
 
 # function to run a shell command
@@ -82,7 +82,7 @@ def show_wifi_menu():
         "-lines",
         str(len(menu_items)),
         "-theme",
-        theme,
+        custom_theme,
     ]
     process = subprocess.Popen(
         rofi_cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding="utf-8"
